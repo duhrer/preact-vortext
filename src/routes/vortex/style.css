@@ -1,0 +1,25 @@
+.grid {
+    background: black;
+    background-color: black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 4rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.cell {
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 12.5%;
+    display: flex;
+    height: 3.5rem;
+    justify-content: center;
+    width: 3.5rem;
+}
