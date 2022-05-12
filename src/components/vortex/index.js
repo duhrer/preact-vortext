@@ -76,7 +76,7 @@ class Vortex extends Component {
         let interval = setInterval(() => {
             this.updateSimulation(this);
         }, 25);
-        this.setState({ interval});
+        this.state = { interval};
 
     }
 
@@ -166,7 +166,6 @@ class Vortex extends Component {
             balls: updatedBalls,
             grid: updatedGrid
         });
-
     }
 }
 
