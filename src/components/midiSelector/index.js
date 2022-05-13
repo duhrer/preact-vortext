@@ -10,16 +10,16 @@ class MidiSelector extends Component {
 		this.props.that.applier.change(path, newValue);
 	}
 
-	handleNoteInputChange = (newValue) => {
-		this.handleModelChange("selectedNoteInput", newValue);
+	handleNoteInputChange = (event) => {
+		this.handleModelChange("selectedNoteInput", event && event.target && event.target.value);
 	}
 
-	handleNoteOutputChange = (newValue) => {
-		this.handleModelChange("selectedNoteOutput", newValue);
+	handleNoteOutputChange = (event) => {
+		this.handleModelChange("selectedNoteOutput", event && event.target && event.target.value);
 	}
 
-	handleUIOutputChange = (newValue) => {
-		this.handleModelChange("selectedUIOutput", newValue);
+	handleUIOutputChange = (event) => {
+		this.handleModelChange("selectedUIOutput", event && event.target && event.target.value);
 	}
 
     render() {
@@ -28,19 +28,19 @@ class MidiSelector extends Component {
                 label="Note Input"
                 selectedOption={this.props.that.model.selectedNoteInput}
                 optionDefs={this.props.that.model.ports.inputs}
-                onchange={this.handleNoteInputChange}
+                onChange={this.handleNoteInputChange}
             />
             <SelectBox
                 label="Note Output"
                 selectedOption={this.props.that.model.selectedNoteOutput}
                 optionDefs={this.props.that.model.ports.outputs}
-                onchange={this.handleNoteOutputChange}
+                onChange={this.handleNoteOutputChange}
             />
             <SelectBox
                 label="UI Output"
                 selectedOption={this.props.that.model.selectedUIOutput}
                 optionDefs={this.props.that.model.ports.inputs}
-                onchange={this.handleUIOutputChange}
+                onChange={this.handleUIOutputChange}
             />
         </div>);
     }

@@ -9,10 +9,7 @@ class SelectBox extends Component {
 
         // flocking-midi returns entries like this for each port:
         //
-        // {
-        //     id: "flock-no-port-selected",
-        //     name: "None"
-        // }
+        // {onmidimessage: null, connection: 'closed', id: '-1533143247', manufacturer: 'Focusrite', name: 'Scarlett 8i6 USB', …}
         if (Array.isArray(this.props.optionDefs)) {
             this.props.optionDefs.forEach((optionDef, index) => {
                 const isSelected = this.props.selectedOption === optionDef.id;

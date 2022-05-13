@@ -40,6 +40,7 @@ class Row extends Component {
 
 class Vortex extends Component {
     state = {
+        isMounted: false,
         interval: false,
         balls: [],
         grid: [
@@ -80,6 +81,10 @@ class Vortex extends Component {
 
     }
 
+    componentDidMount() {
+        this.setState({ isMounted: true})
+    };
+
     componentWillUnmount() {
         if (this.state.interval) {
             clearInterval(this.state.interval);
@@ -87,14 +92,16 @@ class Vortex extends Component {
     }
 
     addBall = (row, col) => {
-        let xOffsetFromCentre = col - 5;
-        let yOffsetFromCentre = row - 5;
-        let radius = Math.sqrt((xOffsetFromCentre * xOffsetFromCentre) + (yOffsetFromCentre * yOffsetFromCentre));
-        let angleRadians = Math.atan2(yOffsetFromCentre, xOffsetFromCentre);
-        let angleDegrees = (360 + (angleRadians * 180 / Math.PI)) % 360;
-        
-        let updatedBalls = this.state.balls.concat([{ angle: angleDegrees, radius, energy: 1}]);
-        this.setState({ balls: updatedBalls});
+        if (this.state.isMounted) {
+            let xOffsetFromCentre = col - 5;
+            let yOffsetFromCentre = row - 5;
+            let radius = Math.sqrt((xOffsetFromCentre * xOffsetFromCentre) + (yOffsetFromCentre * yOffsetFromCentre));
+            let angleRadians = Math.atan2(yOffsetFromCentre, xOffsetFromCentre);
+            let angleDegrees = (360 + (angleRadians * 180 / Math.PI)) % 360;
+            
+            let updatedBalls = this.state.balls.concat([{ angle: angleDegrees, radius, energy: 1}]);
+            this.setState({ balls: updatedBalls});    
+        }        
     }
 
     updateSimulation() {

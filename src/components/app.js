@@ -27,6 +27,9 @@ class App extends Component {
 					}
 				}
 			});
+
+			// TODO: Remove
+			window.sidecar = this.that;
         }
 	}
 
